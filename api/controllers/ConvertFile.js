@@ -13,7 +13,7 @@ export const uploadFile = (req, res, next) => {
       });
     }
     // Defining outout file path
-    let outoutPath = path.join(__dirname, "files", `${req.file.originalname}.pdf`);
+    let outoutPath = path.join(__dirname, "../files", `${req.file.originalname}.pdf`);
     docxToPDF(req.file.path, outoutPath, (err, result) => {
       if (err) {
         console.log(err);
