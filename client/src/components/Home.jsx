@@ -19,20 +19,19 @@ function Home() {
     const formData = new FormData();
     formData.append("file", selectedFile);
     try {
-      const response = await axios.post("http://localhost:3000/convertFile", formData, {
+      const response = await axios.post("https://word-to-pdf-api.vercel.app/", formData, {
         responseType: "blob",
       });
       console.log(response.data);
       const url = window.URL.createObjectURL(new Blob([response.data]));
-      console.log(url);
       const link = document.createElement("a");
-      console.log(link);
+
       link.href = url;
-      console.log(link);
+
       link.setAttribute("download", selectedFile.name.replace(/\.[^/.]+$/, "") + ".pdf");
-      console.log(link);
+
       document.body.appendChild(link);
-      console.log(link);
+
       link.click();
       link.parentNode.removeChild(link);
       setSelectedFile(null);
