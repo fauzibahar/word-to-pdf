@@ -12,10 +12,6 @@ const __dirname = path.dirname(__filename);
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.json("Welcome To Word to PDF API");
-});
-
 // settting up the file storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -53,6 +49,10 @@ app.post("/convertFile", upload.single("file"), (req, res, next) => {
       message: "Internal server error",
     });
   }
+});
+
+app.get("/", (req, res) => {
+  res.json("Welcome To Word to PDF API");
 });
 
 app.listen(port, () => {
