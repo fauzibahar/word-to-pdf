@@ -19,11 +19,12 @@ function Home() {
     const formData = new FormData();
     formData.append("file", selectedFile);
     try {
-      const response = await axios.post("https://word-to-pdf-api.vercel.app/", formData, {
+      const response = await axios.post("https://word-to-pdf-api.vercel.app/convertFile", formData, {
         responseType: "blob",
       });
-      console.log(response.data);
+
       const url = window.URL.createObjectURL(new Blob([response.data]));
+
       const link = document.createElement("a");
 
       link.href = url;
